@@ -1,17 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site';
-const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'OKtoPress', url: SITE.url, logo: SITE.url + '/icon.png' };
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'OKtoPress', url: SITE.url, logo: SITE.url + '/brand/app-icon-512.png' };
 const web = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OKtoPress', url: SITE.url };
 ---
 <Base title="OKtoPress: Is your art OK to press?" jsonld={[org, web]}>
 <div class="wrap">
-  <div class="hero">
-    <span class="blob"><img src="/icon.png" alt="OKtoPress octopus icon" width="80" height="80"></span>
-    <h1>Is your art OK to press?</h1>
-    <p>A free art checker for print shops and their customers. Check print resolution and ink colours before an order hits the press.</p>
-    <a class="btn" href="/dpi-checker" data-pass-src>Check your art free</a> &nbsp; <a class="btn alt" href="/for-shops" data-pass-src>Add it to your shop</a>
+  <div class="hero home">
+    <div class="hero-copy">
+      <h1>Is your art<br> OK to press?</h1>
+      <p class="lede">Check resolution, colours and size in seconds. Then send your art to your print shop with confidence.</p>
+      <div class="ctas"><a class="btn" href="/dpi-checker" data-pass-src>Try the free art checker</a><a class="btn alt" href="/for-shops" data-pass-src>Add it to your shop</a></div>
+      <p class="small muted">Free for shops to embed. Built in Nelson, BC.</p>
+    </div>
+    <img class="okto" src="/brand/okto-squeegee-pull.svg" alt="" width="320" height="320">
+    <div class="demo card" aria-label="Example checker report (illustration)">
+      <p class="demo-t">Free art checker</p><p class="demo-s">Example report</p>
+      <div class="drop"><span class="c"></span><span class="b"></span><span class="f">shirt-logo.png</span></div>
+      <ul><li>Resolution <span class="pill good">Good</span></li><li>Colours <span class="pill warn">Borderline</span></li><li>Print size <span class="pill good">Good</span></li></ul>
+      <a class="btn block" href="/dpi-checker" data-pass-src>Check your own art</a>
+    </div>
   </div>
+</div>
+<div class="band"><div class="wrap">
   <section><h2>What the free checker does</h2>
     <div class="grid">
       <div class="card tealbar"><h3>Print resolution at print size</h3><p>Enter the width you'll print at and see the effective DPI. Green at 300 or more, amber from 150 to 299, red under 150.</p></div>
@@ -32,5 +43,5 @@ const web = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OKtoP
     </div>
     <p style="margin-top:20px"><a class="btn" href="/for-shops#waitlist" data-pass-src>Join the waitlist</a></p>
   </section>
-</div>
+</div></div>
 </Base>
