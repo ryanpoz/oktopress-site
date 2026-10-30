@@ -1,0 +1,13 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPosts, fmt, slugify } from '../../../site';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((t) => ({ params: { tag: slugify(t) }, props: { tag: t, posts: posts.filter((p) => p.data.tags.includes(t)) } }));
+}
+const { tag, posts } = Astro.props;
+---
+<Base title={`Posts tagged "${tag}"`}><div class="wrap narrow"><p><a href="/blog">← All posts</a></p><h1>Tagged: {tag}</h1>
+{posts.map((p) => <article class="card" style="margin-bottom:16px"><h2 style="margin-top:0"><a href={`/blog/${p.id}`}>{p.data.title}</a></h2><p class="post-meta">{fmt(p.data.pubDate)}</p><p>{p.data.description}</p></article>)}
+</div></Base>

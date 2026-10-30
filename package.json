@@ -1,0 +1,1 @@
+{"name":"oktopress-site","type":"module","version":"1.0.0","private":true,"scripts":{"dev":"astro dev","build":"astro build","preview":"astro preview"},"engines":{"node":">=18.20.8"},"dependencies":{"@astrojs/mdx":"^4.3.14","@astrojs/rss":"^4.0.19","@astrojs/sitemap":"^3.7.4","astro":"^5.18.2"}}

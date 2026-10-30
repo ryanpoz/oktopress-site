@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'OKtoPress', url: SITE.url, logo: SITE.url + '/icon.png' };
+const web = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OKtoPress', url: SITE.url };
+---
+<Base title="OKtoPress: Is your art OK to press?" jsonld={[org, web]}>
+<div class="wrap">
+  <div class="hero">
+    <span class="blob"><img src="/icon.png" alt="OKtoPress octopus icon" width="80" height="80"></span>
+    <h1>Is your art OK to press?</h1>
+    <p>A free art checker for print shops and their customers. Check print resolution and ink colours before an order hits the press.</p>
+    <a class="btn" href="/dpi-checker" data-pass-src>Check your art free</a> &nbsp; <a class="btn alt" href="/for-shops" data-pass-src>Add it to your shop</a>
+  </div>
+  <section><h2>What the free checker does</h2>
+    <div class="grid">
+      <div class="card tealbar"><h3>Print resolution at print size</h3><p>Enter the width you'll print at and see the effective DPI. Green at 300 or more, amber from 150 to 299, red under 150.</p></div>
+      <div class="card tealbar"><h3>Ink colour count</h3><p>Get an estimate of how many ink colours your design uses: exact for vector fills in SVG and PDF, estimated for PNG and JPG.</p></div>
+      <div class="card tealbar"><h3>Auto-reduce preview</h3><p>See a preview of your art reduced to fewer ink colours, so you know what a cheaper print run could look like.</p></div>
+    </div>
+    <p class="muted">Every report is an estimate. The shop confirms on proof.</p>
+  </section>
+  <section><h2>Embed it for your shop</h2>
+    <p>Print shops can put the checker on their own website with one iframe, a script tag, or the WordPress plugin. Customers check their art before they send it, so you get fewer files you have to chase.</p>
+    <a class="btn" href="/for-shops" data-pass-src>Get the embed code</a>
+  </section>
+  <section><h2>Coming soon for small print shops</h2>
+    <div class="grid">
+      <div class="card"><span class="soon">Coming soon</span><h3>Quotes</h3><p>Send quotes from the same place customers check their art.</p></div>
+      <div class="card"><span class="soon">Coming soon</span><h3>Proofs</h3><p>Send proofs and get sign-off before you burn screens.</p></div>
+      <div class="card"><span class="soon">Coming soon</span><h3>Deposits</h3><p>Take a deposit when the customer approves.</p></div>
+    </div>
+    <p style="margin-top:20px"><a class="btn" href="/for-shops#waitlist" data-pass-src>Join the waitlist</a></p>
+  </section>
+</div>
+</Base>
