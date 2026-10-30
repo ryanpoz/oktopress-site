@@ -29,14 +29,14 @@ const cur = (p: string) => (path === p || path.startsWith(p + '/')) ? 'page' : u
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/" aria-label="OKtoPress home"><img src="/brand/logo-navy.svg" alt="OKtoPress" width="158" height="44"></a>
+  <a class="brand" href="/" aria-label="OKtoPress home"><img src="/brand/logo-navy.svg" alt="OKtoPress" width="129" height="36"></a>
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav" onclick="var n=document.getElementById('mainnav'),o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-  <nav aria-label="Main" id="mainnav"><a href="/dpi-checker" aria-current={cur('/dpi-checker')}>Free checker</a><a href="/for-shops" aria-current={cur('/for-shops')}>For shops</a><a href="/blog" aria-current={cur('/blog')}>Blog</a></nav>
+  <nav aria-label="Main" id="mainnav"><a href="/dpi-checker" aria-current={cur('/dpi-checker')}>Checker</a><a href="/for-shops" aria-current={cur('/for-shops')}>For shops</a><a href="/blog" aria-current={cur('/blog')}>Blog</a><a class="login" href={SITE.login}>Log in</a><a class="cta" href={SITE.signup}>Start free</a></nav>
 </div></header>
 <main><slot /></main>
 <footer class="site"><div class="wrap">
   <span class="fbrand"><img src="/brand/logo-onnavy.svg" alt="OKtoPress" width="144" height="40"><span>Made in Nelson, BC</span></span>
-  <span><a href="/dpi-checker">Free checker</a> · <a href="/for-shops">For shops</a> · <a href="/blog">Blog</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy">Privacy</a></span>
+  <span><a href="/dpi-checker">Checker</a> · <a href="/for-shops">For shops</a> · <a href="/blog">Blog</a> · <a href={SITE.login}>Log in</a> · <a href={SITE.signup}>Start free</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy">Privacy</a></span>
 </div></footer>
 <script is:inline>
 /* Pass ?src= through to iframes and internal links that opt in */

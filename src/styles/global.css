@@ -18,14 +18,17 @@ a{color:var(--coral-deep)} a:hover{text-decoration-thickness:2px}
 .narrow{max-width:760px}
 main>.wrap:first-child,main>article.wrap{padding-top:40px}
 header.site{background:var(--paper);border-bottom:1px solid var(--line)}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:100px;flex-wrap:wrap}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;text-decoration:none}
-.brand img{height:44px;width:auto;display:block}
+.brand img{height:36px;width:auto;display:block}
 .ok{color:var(--coral-deep)}
-nav a{margin-left:40px;color:var(--ink-navy);text-decoration:none;font-weight:600;font-size:16px}
+nav{display:flex;align-items:center;gap:28px}
+nav a{color:var(--ink-navy);text-decoration:none;font-weight:600;font-size:16px;line-height:1.2}
+nav a.cta{background:var(--coral-deep);color:var(--white);padding:10px 18px;border-radius:var(--btn-radius)}
+nav a.cta:hover{background:#A83625;color:var(--white)}
 nav a:hover,nav a[aria-current=page]{color:var(--coral-deep)}
 .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer}
-.menu-btn span{display:block;width:28px;height:2.5px;border-radius:2px;background:var(--ink-navy);margin:5.5px 0}
+.menu-btn span{display:block;width:26px;height:2.5px;border-radius:2px;background:var(--ink-navy);margin:5px 0}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:var(--coral-deep);color:var(--white);text-decoration:none;font-weight:600;padding:0 24px;border-radius:var(--btn-radius);border:0;font-size:18px;font-family:var(--font-body);cursor:pointer}
 .btn:hover{background:#A83625}
 .btn.alt{background:var(--white);color:var(--ink-navy);border:1.5px solid var(--ink-navy)}
@@ -81,11 +84,12 @@ footer.site .wrap{display:flex;justify-content:space-between;align-items:center;
 footer.site a{color:var(--white)} footer.site a:hover{color:var(--tide-light)}
 @media (max-width:900px){
   header.site .wrap{min-height:64px}
-  .brand img{height:32px}
+  .brand img{height:30px}
   .menu-btn{display:block}
-  nav{display:none;width:100%;padding-bottom:12px}
-  nav.open{display:flex;flex-direction:column}
-  nav a{margin:0;padding:10px 0;border-top:1px solid var(--line)}
+  nav{display:none;width:100%;padding-bottom:12px;gap:0}
+  nav.open{display:flex;flex-direction:column;align-items:stretch}
+  nav a{margin:0;padding:12px 0;border-top:1px solid var(--line)}
+  nav a.cta{text-align:center;margin-top:8px;border-top:0}
   .hero.home{display:block;padding:24px 0 32px;min-height:0}
   .hero.home h1{font-size:40px;line-height:48px;margin:0 0 14px;padding-right:90px}
   .hero.home .lede{font-size:16px;line-height:24px;margin-bottom:24px}

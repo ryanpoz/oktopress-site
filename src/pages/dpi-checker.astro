@@ -17,7 +17,7 @@ const app = { '@context': 'https://schema.org', '@type': 'WebApplication', name:
 <div class="wrap">
   <h1>Free DPI and ink color checker</h1>
   <p class="muted">Upload your art, enter the print width, and see if it's OK to press. Free, no sign-up.</p>
-  <iframe class="checker" data-pass-src src={SITE.checker} title="OKtoPress free art checker" loading="lazy"></iframe>
+  <iframe class="checker" data-pass-src src={SITE.checker + '/?embed=1'} title="OKtoPress free art checker" loading="lazy"></iframe>
   <div class="narrow">
     <section><h2>How the checker works</h2>
       <h3>1. Resolution at print size</h3><p>A file can look sharp on screen and still print soft. The checker divides your image's pixel width by the print width you enter to get the effective DPI, then rates it green (300+), amber (150 to 299) or red (under 150).</p>

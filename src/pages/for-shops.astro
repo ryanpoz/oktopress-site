@@ -8,33 +8,15 @@ const C = SITE.checker;
 <div class="wrap narrow">
   <h1>Put the free art checker on your shop's website</h1>
   <p class="muted">Your customers check resolution and ink colours before they send art. Uploads go to the OKtoPress service inside the iframe and never touch your website's server.</p>
-  <section id="embed"><h2>1. Pick your Shop ID</h2>
-    <p>Choose a short ID for your shop (letters, numbers and dashes). It's used to count checks for your shop. Add your email so customers can send their report to you.</p>
-    <form class="wl" id="snip-form" onsubmit="return false">
-      <input id="shop" placeholder="your-shop-id" aria-label="Shop ID">
-      <input id="semail" type="email" placeholder="orders@yourshop.com" aria-label="Shop email">
-    </form>
-    <h2>2. Paste the snippet</h2>
-    <h3>Iframe (works almost anywhere)</h3>
-    <pre id="s-iframe"></pre>
-    <h3>Script tag (auto-height, where scripts are allowed)</h3>
-    <pre id="s-script"></pre>
-    <h3>WordPress</h3>
-    <p>Install the OKtoPress Art Checker plugin, then add this shortcode to any page (or use the block):</p>
-    <pre>[oktopress]</pre>
-    <h3>Hosted link</h3>
-    <pre id="s-link"></pre>
-    <p class="muted">Start the iframe at 1,600 px tall and raise it if the bottom of the report gets cut off on phones. Ready-made snippets for your ID are also at <a id="s-install" data-pass-src href={C + '/install'}>{C.replace('https://','')}/install</a>.</p>
+  <section id="embed"><h2>1. Create your free shop account</h2>
+    <p>Sign up with your email, shop name and website. We email you a sign-in link (no password), and your dashboard gives you a ready-made snippet with your own Shop ID. The checker only loads on the websites you register.</p>
+    <p><a class="btn" href={C + '/signup'}>Set up my free checker</a></p>
+    <p class="muted">Already signed up? <a href={C + '/login'}>Sign in to your dashboard</a>.</p>
+    <h2>2. Paste the snippet from your dashboard</h2>
+    <p>It's an iframe that works almost anywhere (add <code>?accent=RRGGBB</code> to match your brand colour), plus a script tag for auto-height where scripts are allowed. On WordPress, install the OKtoPress Art Checker plugin and use the shortcode <code>[oktopress]</code> or the block.</p>
+    <h2>3. See checks and leads</h2>
+    <p>Your dashboard lists the last 30 days of art checks, and customers can send their report straight to you so you can quote it.</p>
   </section>
   <Waitlist />
 </div>
-<script is:inline define:vars={{ C }}>
-(function(){var $=function(i){return document.getElementById(i)};
-function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function upd(){var id=($('shop').value||'YOUR-SHOP-ID').trim().replace(/[^A-Za-z0-9-]/g,'-'),em=($('semail').value||'you@yourshop.com').trim();
-$('s-iframe').textContent='<iframe src="'+C+'/c/'+id+'?email='+encodeURIComponent(em)+'" title="Free artwork check" loading="lazy" style="width:100%;max-width:760px;height:1600px;border:0"></iframe>';
-$('s-script').textContent='<script src="'+C+'/embed.js" data-shop="'+esc(id)+'" data-email="'+esc(em)+'" async><\/script>';
-$('s-link').textContent=C+'/c/'+id;}
-$('shop').addEventListener('input',upd);$('semail').addEventListener('input',upd);upd();})();
-</script>
 </Base>

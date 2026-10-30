@@ -12,4 +12,4 @@ Astro static site for www.oktopress.com. Vercel runs `npm run build` on every pu
 ## Notes
 - Brand colours and fonts live in CSS variables at the top of `src/styles/global.css`.
 - Spelling: "color" in titles/URLs, "colour" in body text.
-- Waitlist form posts to `https://check.oktopress.com/api/waitlist` (needs CORS on the checker for www.oktopress.com and oktopress.com).
+- Waitlist form posts to `https://app.oktopress.com/api/waitlist` (needs CORS on the checker for www.oktopress.com and oktopress.com).
