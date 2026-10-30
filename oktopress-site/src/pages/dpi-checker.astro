@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import { SITE } from '../site';
+const faqs = [
+  { q: 'What DPI do I need for screen printing or DTF?', a: 'Aim for 300 DPI at the size you will print. The checker shows green at 300 DPI or more, amber from 150 to 299, and red under 150.' },
+  { q: 'Why does my image say 72 DPI?', a: 'The DPI number saved in a file does not matter much. What matters is how many pixels you have across the print width. The checker works out the effective DPI from the pixel size and the width you enter.' },
+  { q: 'How does the checker count ink colours?', a: 'For vector SVG and PDF files it reads the fill colours exactly. For PNG and JPG it removes the background and estimates the main colours. It is an estimate, and the shop confirms on proof.' },
+  { q: 'What files can I check?', a: 'PNG, JPG, SVG and PDF. The reduce-colours preview works for PNG, JPG and SVG.' },
+  { q: 'What happens to my upload?', a: 'Uploads are deleted after 24 hours. See the privacy page for details.' },
+  { q: 'Is it free?', a: 'Yes. The art checker is free to use.' },
+];
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const app = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'OKtoPress art checker', url: SITE.url + '/dpi-checker', applicationCategory: 'DesignApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'CAD' } };
+---
+<Base title="Free DPI and Ink Color Checker for Print" description="Upload your art and check print resolution at your print size, ink colour count, and a reduced-colour preview. Free, no sign-up." jsonld={[app, faqLd]}>
+<div class="wrap">
+  <h1>Free DPI and ink color checker</h1>
+  <p class="muted">Upload your art, enter the print width, and see if it's OK to press. Free, no sign-up.</p>
+  <iframe class="checker" data-pass-src src={SITE.checker} title="OKtoPress free art checker" loading="lazy"></iframe>
+  <div class="narrow">
+    <section><h2>How the checker works</h2>
+      <h3>1. Resolution at print size</h3><p>A file can look sharp on screen and still print soft. The checker divides your image's pixel width by the print width you enter to get the effective DPI, then rates it green (300+), amber (150 to 299) or red (under 150).</p>
+      <h3>2. Ink colour count</h3><p>Screen printing charges per colour, so the count matters. Vector fills in SVG and PDF are read exactly. Raster PNG and JPG files are estimated after the background is removed. Photos and gradients are flagged, since they usually need halftones or DTF.</p>
+      <h3>3. Auto-reduce preview</h3><p>Pick a smaller number of inks and see a preview of your art reduced to those colours. It's a preview only; the shop confirms final separations on proof.</p>
+    </section>
+    <Faq faqs={faqs} />
+  </div>
+</div>
+</Base>

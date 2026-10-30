@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, fmt, slugify, readingTime } from '../../site';
+const posts = await getPosts();
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+<Base title="Blog: Print-Ready Art Tips" description="Guides on print resolution, ink colours and getting art ready for screen printing, DTF and embroidery.">
+<div class="wrap narrow"><h1>Blog</h1>
+{tags.length > 0 && <p class="tags">{tags.map((t) => <a href={`/blog/tag/${slugify(t)}`}>{t}</a>)}</p>}
+{posts.length === 0 && <p class="muted">Posts are on the way.</p>}
+{posts.map((p) => <article class="card" style="margin-bottom:16px"><h2 style="margin-top:0"><a href={`/blog/${p.id}`}>{p.data.title}</a></h2><p class="post-meta">{fmt(p.data.pubDate)} · {readingTime(p.body)} min read{p.data.draft && ' · DRAFT'}</p><p>{p.data.description}</p></article>)}
+</div></Base>

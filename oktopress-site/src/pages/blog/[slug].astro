@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+import { render } from 'astro:content';
+import { getPosts, fmt, slugify, readingTime, SITE } from '../../site';
+export async function getStaticPaths() {
+  return (await getPosts()).map((p) => ({ params: { slug: p.id }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data; const url = `${SITE.url}/blog/${post.id}`;
+const ld: object[] = [{ '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description,
+  datePublished: d.pubDate.toISOString(), dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+  author: { '@type': 'Person', name: d.author }, publisher: { '@type': 'Organization', name: 'OKtoPress', logo: { '@type': 'ImageObject', url: SITE.url + '/brand/app-icon-512.png' } },
+  mainEntityOfPage: url, image: SITE.url + '/brand/app-icon-512.png', keywords: d.tags.join(', ') }];
+if (d.faqs?.length) ld.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: d.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+---
+<Base title={d.title} description={d.description} type="article" jsonld={ld} noindex={d.draft}>
+<article class="wrap narrow">
+  <p><a href="/blog">← Blog</a></p>
+  <h1>{d.title}</h1>
+  <p class="post-meta">By {d.author} · <time datetime={d.pubDate.toISOString()}>{fmt(d.pubDate)}</time>{d.updatedDate && <> · Updated {fmt(d.updatedDate)}</>} · {readingTime(post.body)} min read{d.draft && ' · DRAFT'}</p>
+  {d.tags.length > 0 && <p class="tags">{d.tags.map((t) => <a href={`/blog/tag/${slugify(t)}`}>{t}</a>)}</p>}
+  <Content />
+  {d.faqs?.length && <Faq faqs={d.faqs} />}
+  <section class="card"><h3>Is your art OK to press?</h3><p>Check print resolution and ink colours free.</p><a class="btn" href="/dpi-checker">Try the free checker</a></section>
+</article></Base>

@@ -1,0 +1,30 @@
+---
+import { SITE } from '../site';
+---
+<section id="waitlist">
+<h2>Join the waitlist</h2>
+<p class="muted">Quotes, proofs and deposits for small print shops are coming soon. Leave your email and we'll tell you when they're ready.</p>
+<form class="wl" id="wl-form">
+  <input type="email" name="email" placeholder="you@yourshop.com" required aria-label="Email">
+  <input type="text" name="shop_name" placeholder="Shop name (optional)" aria-label="Shop name">
+  <input type="url" name="website" placeholder="Shop website (optional)" aria-label="Website">
+  <input type="text" name="country" placeholder="Country (optional)" aria-label="Country">
+  <select name="platform" aria-label="Website platform"><option value="">Website platform (optional)</option><option>WordPress</option><option>Wix</option><option>Shopify</option><option>Squarespace</option><option>GoDaddy</option><option>Duda</option><option>Other</option></select>
+  <input type="text" name="fax" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="hidden" name="src" value="">
+  <label><input type="checkbox" name="consent" required> I agree OKtoPress can store my email to contact me about launch. See <a href="/privacy">privacy</a>.</label>
+  <button class="btn" type="submit">Join the waitlist</button>
+  <p id="wl-msg" role="status" class="muted"></p>
+</form>
+<script is:inline define:vars={{ api: SITE.checker + '/api/waitlist' }}>
+document.getElementById('wl-form').addEventListener('submit', async function (e) {
+  e.preventDefault(); var f = e.target, m = document.getElementById('wl-msg'), d = Object.fromEntries(new FormData(f));
+  d.consent = !!f.consent.checked; d.shop = d.src || ''; delete d.src; d.host = location.hostname;
+  m.textContent = 'Sending…';
+  try { var r = await fetch(api, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+    var j = await r.json().catch(function(){return {};});
+    if (r.ok) { f.reset(); m.textContent = "Thanks! You're on the list."; } else { m.textContent = j.detail || 'Something went wrong. Please try again.'; }
+  } catch (err) { m.textContent = 'Could not reach the signup service. Please try again later.'; }
+});
+</script>
+</section>
