@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Steps from '../components/Steps.astro';
+import { SITE } from '../site';
+---
+<Base title="How it works: set up in 3 steps" description="Set up OKtoPress in 3 steps: sign up, set prices from a starter grid, and paste one line of code or install the WordPress plugin.">
+<div class="wrap">
+  <div class="page-hero"><h1>How it works</h1><p>Set up in 3 steps. Then customers upload art, see a price range, and approve your quote, right on your website.</p></div>
+  <section><Steps /></section>
+  <section><h2>What your customers see</h2>
+    <ol class="journey">
+      <li>Upload art</li><li>Art check</li><li>Email</li><li>Price range</li><li>You get the lead</li><li>Quote</li><li>Signed approval</li>
+    </ol></section>
+  <section><h2>Works alongside your shop software</h2><p>OKtoPress isn't an all-in-one. Keep your existing shop software for production and invoicing; OKtoPress handles the pre-job step: art upload, quote, signed proof and deposit.</p>
+    <div class="ctas"><a class="btn" href={SITE.signup}>Start free</a><a class="btn alt" href="/dpi-checker">Try the art checker</a></div></section>
+</div>
+</Base>

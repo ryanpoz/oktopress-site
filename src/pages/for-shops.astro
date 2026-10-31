@@ -1,22 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
-import Waitlist from '../components/Waitlist.astro';
 import { SITE } from '../site';
 const C = SITE.checker;
 ---
-<Base title="Add a Free Art Checker to Your Print Shop Website" description="Embed the free OKtoPress art checker on your print shop website with an iframe, a script tag, or the WordPress plugin shortcode [oktopress].">
+<Base title="Install OKtoPress on Your Print Shop Website" description="Add OKtoPress to your print shop website with one line of code or the WordPress plugin shortcode [oktopress].">
 <div class="wrap narrow">
-  <h1>Put the free art checker on your shop's website</h1>
-  <p class="muted">Your customers check resolution and ink colours before they send art. Uploads go to the OKtoPress service inside the iframe and never touch your website's server.</p>
+  <h1>Install OKtoPress on your shop's website</h1>
+  <p class="muted">Customers check their art, see a price range and send you the lead. Uploads go to the OKtoPress service inside the embed and never touch your website's server. New here? See <a href="/how-it-works">how it works</a> and <a href="/features">features</a>.</p>
   <section id="embed"><h2>1. Create your free shop account</h2>
-    <p>Sign up with your email, shop name and website. We email you a sign-in link (no password), and your dashboard gives you a ready-made snippet with your own Shop ID. The checker only loads on the websites you register.</p>
-    <p><a class="btn" href={C + '/signup'}>Set up my free checker</a></p>
-    <p class="muted">Already signed up? <a href={C + '/login'}>Sign in to your dashboard</a>.</p>
-    <h2>2. Paste the snippet from your dashboard</h2>
-    <p>It's an iframe that works almost anywhere (add <code>?accent=RRGGBB</code> to match your brand colour), plus a script tag for auto-height where scripts are allowed. On WordPress, install the OKtoPress Art Checker plugin and use the shortcode <code>[oktopress]</code> or the block.</p>
-    <h2>3. See checks and leads</h2>
-    <p>Your dashboard lists the last 30 days of art checks, and customers can send their report straight to you so you can quote it.</p>
+    <p>Sign up with your email, shop name and website. Your dashboard gives you a ready-made snippet with your own Shop ID. It only loads on the websites you register.</p>
+    <p><a class="btn" href={SITE.signup}>Start free</a></p>
+    <p class="muted">Already signed up? <a href={SITE.login}>Log in to your dashboard</a>.</p>
+    <h2>2. Set your prices</h2>
+    <p>Start from the starter price grid and adjust it to how you price jobs.</p>
+    <h2>3. Paste one line of code</h2>
+    <p>Paste the snippet from your dashboard into your site. On WordPress, install the OKtoPress plugin and use the shortcode <code>[oktopress]</code> or the block. Wix support is planned. Style it to match your site's colours, font and corners from your dashboard.</p>
   </section>
-  <Waitlist />
 </div>
 </Base>

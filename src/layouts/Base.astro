@@ -31,7 +31,7 @@ const cur = (p: string) => (path === p || path.startsWith(p + '/')) ? 'page' : u
 <header class="site"><div class="wrap">
   <a class="brand" href="/" aria-label="OKtoPress home"><img src="/brand/logo-navy.svg" alt="OKtoPress" width="129" height="36"></a>
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav" onclick="var n=document.getElementById('mainnav'),o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-  <nav aria-label="Main" id="mainnav"><a href="/dpi-checker" aria-current={cur('/dpi-checker')}>Checker</a><a href="/for-shops" aria-current={cur('/for-shops')}>For shops</a><a href="/blog" aria-current={cur('/blog')}>Blog</a><a class="login" href={SITE.login}>Log in</a><a class="cta" href={SITE.signup}>Start free</a></nav>
+  <nav aria-label="Main" id="mainnav"><a href="/features" aria-current={cur('/features')}>Features</a><a href="/how-it-works" aria-current={cur('/how-it-works')}>How it works</a><a href="/pricing" aria-current={cur('/pricing')}>Pricing</a><a href="/dpi-checker" aria-current={cur('/dpi-checker')}>Checker</a><a href="/blog" aria-current={cur('/blog')}>Blog</a><a class="login" href={SITE.login}>Log in</a><a class="cta" href={SITE.signup}>Start free</a></nav>
   {/* Signed in on app.oktopress.com? It sets a non-secret hint cookie (okp_signed_in=1) on .oktopress.com. */}
   <script is:inline>(function(){if(!/(?:^|;\s*)okp_signed_in=1(?:;|$)/.test(document.cookie))return;var n=document.getElementById('mainnav');if(!n)return;
 var l=n.querySelector('a.login'),c=n.querySelector('a.cta');if(l)l.remove();if(c){c.textContent='Go to dashboard';c.href='https://app.oktopress.com/dashboard'}})();</script>
@@ -39,7 +39,7 @@ var l=n.querySelector('a.login'),c=n.querySelector('a.cta');if(l)l.remove();if(c
 <main><slot /></main>
 <footer class="site"><div class="wrap">
   <span class="fbrand"><img src="/brand/logo-onnavy.svg" alt="OKtoPress" width="144" height="40"><span>Made in Nelson, BC</span></span>
-  <span><a href="/dpi-checker">Checker</a> · <a href="/for-shops">For shops</a> · <a href="/blog">Blog</a> · <a href={SITE.login}>Log in</a> · <a href={SITE.signup}>Start free</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy">Privacy</a></span>
+  <span><a href="/features">Features</a> · <a href="/how-it-works">How it works</a> · <a href="/pricing">Pricing</a> · <a href="/dpi-checker">Checker</a> · <a href="/for-shops">Install</a> · <a href="/blog">Blog</a> · <a href={SITE.login}>Log in</a> · <a href={SITE.signup}>Start free</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy">Privacy</a></span>
 </div></footer>
 <script is:inline>
 /* Pass ?src= through to iframes and internal links that opt in */

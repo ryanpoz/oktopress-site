@@ -2,7 +2,7 @@
 export const APP_BASE_URL = ((import.meta.env.PUBLIC_APP_BASE_URL as string | undefined) || 'https://app.oktopress.com').replace(/\/$/, '');
 export const SITE = { url: 'https://www.oktopress.com', name: 'OKtoPress', app: APP_BASE_URL, checker: APP_BASE_URL,
   login: APP_BASE_URL + '/login', signup: APP_BASE_URL + '/signup',
-  description: 'Free art checker for print shops and their customers: check print resolution and ink colours before you order.' };
+  description: 'OKtoPress turns your print shop website into a quote machine: art checks, leads, quotes, signed proof approvals and deposits, alongside your existing shop software.' };
 import { getCollection } from 'astro:content';
 export const getPosts = async () => (await getCollection('blog', ({ data }) => import.meta.env.PROD ? !data.draft : true))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());

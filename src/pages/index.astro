@@ -1,21 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
+import Steps from '../components/Steps.astro';
 import { SITE } from '../site';
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'OKtoPress', url: SITE.url, logo: SITE.url + '/brand/app-icon-512.png' };
 const web = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OKtoPress', url: SITE.url };
 ---
-<Base title="OKtoPress: Is your art OK to press?" jsonld={[org, web]}>
+<Base title="OKtoPress: Turn your website into a quote machine" jsonld={[org, web]}>
 <div class="wrap">
   <div class="hero home">
     <div class="hero-copy">
-      <h1>Is your art<br> OK to press?</h1>
-      <p class="lede">Check resolution, colours and size in seconds. Then send your art to your print shop with confidence.</p>
-      <div class="ctas"><a class="btn" href="/dpi-checker" data-pass-src>Try the free art checker</a><a class="btn alt" href="/for-shops" data-pass-src>Add it to your shop</a></div>
-      <p class="small muted">Free for shops to embed. Built in Nelson, BC.</p>
+      <h1>Turn your website into a quote machine</h1>
+      <p class="lede">For small screen print, embroidery, DTF and sign shops. Customers upload art, get it checked and see a price range. You get the lead, send the quote and collect a signed approval, all from one line of code on your site.</p>
+      <div class="ctas"><a class="btn" href={SITE.signup}>Start free</a><a class="btn alt" href="/dpi-checker" data-pass-src>Try the art checker</a></div>
+      <p class="small muted">Works alongside your existing shop software. Built in Nelson, BC.</p>
     </div>
     <img class="okto" src="/brand/okto-squeegee-pull.svg" alt="" width="320" height="320">
     <div class="demo card" aria-label="Example checker report (illustration)">
-      <p class="demo-t">Free art checker</p><p class="demo-s">Example report</p>
+      <p class="demo-t">Art checker</p><p class="demo-s">Example report</p>
       <div class="drop"><span class="c"></span><span class="b"></span><span class="f">shirt-logo.png</span></div>
       <ul><li>Resolution <span class="pill good">Good</span></li><li>Colours <span class="pill warn">Borderline</span></li><li>Print size <span class="pill good">Good</span></li></ul>
       <a class="btn block" href="/dpi-checker" data-pass-src>Check your own art</a>
@@ -23,25 +24,34 @@ const web = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OKtoP
   </div>
 </div>
 <div class="band"><div class="wrap">
-  <section><h2>What the free checker does</h2>
-    <div class="grid">
-      <div class="card tealbar"><h3>Print resolution at print size</h3><p>Enter the width you'll print at and see the effective DPI. Green at 300 or more, amber from 150 to 299, red under 150.</p></div>
-      <div class="card tealbar"><h3>Ink colour count</h3><p>Get an estimate of how many ink colours your design uses: exact for vector fills in SVG and PDF, estimated for PNG and JPG.</p></div>
-      <div class="card tealbar"><h3>Auto-reduce preview</h3><p>See a preview of your art reduced to fewer ink colours, so you know what a cheaper print run could look like.</p></div>
-    </div>
-    <p class="muted">Every report is an estimate. The shop confirms on proof.</p>
+  <section><h2>From uploaded art to signed approval</h2>
+    <ol class="journey">
+      <li>Upload art<span>Customer drops a file on your site</span></li>
+      <li>Art check<span>DPI, colours and size, instantly</span></li>
+      <li>Email<span>Customer enters contact details</span></li>
+      <li>Price range<span>From your own price rules</span></li>
+      <li>You get the lead<span>Email alert and Leads list</span></li>
+      <li>Quote<span>One click from the lead</span></li>
+      <li>Signed approval<span>Typed-name, timestamped record</span></li>
+    </ol>
   </section>
-  <section><h2>Embed it for your shop</h2>
-    <p>Print shops can put the checker on their own website with one iframe, a script tag, or the WordPress plugin. Customers check their art before they send it, so you get fewer files you have to chase.</p>
-    <a class="btn" href="/for-shops" data-pass-src>Get the embed code</a>
-  </section>
-  <section><h2>Coming soon for small print shops</h2>
+  <section><h2>Everything before the job starts</h2>
     <div class="grid">
-      <div class="card"><span class="soon">Coming soon</span><h3>Quotes</h3><p>Send quotes from the same place customers check their art.</p></div>
-      <div class="card"><span class="soon">Coming soon</span><h3>Proofs</h3><p>Send proofs and get sign-off before you burn screens.</p></div>
-      <div class="card"><span class="soon">Coming soon</span><h3>Deposits</h3><p>Take a deposit when the customer approves.</p></div>
+      <div class="card tealbar"><h3>Art checker</h3><p>DPI at print size, ink colour count and low-res warnings, with a report your customer can read.</p></div>
+      <div class="card tealbar"><h3>Lead generation</h3><p>Customers leave their details to see an instant price range. You get an alert, a Leads list and CSV export.</p></div>
+      <div class="card tealbar"><h3>Quote generation</h3><p>Your questions and your price rules. Turn a lead into a quote in one click and email the customer a link.</p></div>
+      <div class="card tealbar"><h3>Approvals</h3><p>Customers approve by typed name. You keep a timestamped, tamper-evident record for proof disputes.</p></div>
+      <div class="card"><span class="soon">Coming soon</span><h3>Deposits</h3><p>Take a Stripe deposit when the customer approves.</p></div>
     </div>
-    <p style="margin-top:20px"><a class="btn" href="/for-shops#waitlist" data-pass-src>Join the waitlist</a></p>
+    <p style="margin-top:20px"><a class="btn alt" href="/features">See all features</a></p>
+  </section>
+  <section><h2>Works alongside your shop software</h2>
+    <p>OKtoPress isn't an all-in-one. Keep the shop software you already use for production, invoicing and inventory. OKtoPress owns the step before that: art upload, quote, signed proof and deposit, right on your own website.</p>
+  </section>
+  <section><h2>Set up in 3 steps</h2><Steps /><p style="margin-top:20px"><a href="/how-it-works">How it works</a></p></section>
+  <section><h2>Simple, flat pricing</h2>
+    <p>Start free with the art checker and up to 5 leads a month. Leads is $9.99/month; Pro is $29.99/month for quotes, approval records and no branding. <strong>Free while in early access: every feature is unlocked during early access.</strong></p>
+    <div class="ctas"><a class="btn" href={SITE.signup}>Start free</a><a class="btn alt" href="/pricing">See pricing</a></div>
   </section>
 </div></div>
 </Base>

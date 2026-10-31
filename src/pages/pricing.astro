@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+---
+<Base title="Pricing" description="OKtoPress pricing for print shops: Free, Leads at $9.99/month and Pro at $29.99/month (USD). Every feature is unlocked during early access.">
+<div class="wrap">
+  <div class="page-hero"><h1>Simple, flat pricing</h1><p>One flat monthly price. No per-quote fees. Prices in USD.</p></div>
+  <p class="notice"><span>Free while in early access:</span> every feature is unlocked during early access.</p>
+  <div class="plans">
+    <div class="card plan"><h2>Free</h2><p class="price">$0</p><ul><li>Art checker</li><li>"Powered by OKtoPress" branding</li><li>Up to 5 leads a month</li></ul><a class="btn alt block" href={SITE.signup}>Start free</a></div>
+    <div class="card plan"><h2>Leads</h2><p class="price">$9.99 <small>/month</small></p><ul><li>Everything in Free</li><li>Unlimited leads</li><li>Lead email alerts</li></ul><a class="btn alt block" href={SITE.signup}>Start free</a></div>
+    <div class="card plan featured"><h2>Pro</h2><p class="price">$29.99 <small>/month</small></p><ul><li>Everything in Leads</li><li>Quotes</li><li>Approval records</li><li>No OKtoPress branding</li></ul><a class="btn block" href={SITE.signup}>Start free</a></div>
+  </div>
+  <ul class="promises"><li>No training</li><li>A flat price</li><li>Export your data anytime</li></ul>
+  <p class="muted" style="margin-top:20px">Deposits are coming soon. See <a href="/features">all features</a>.</p>
+</div>
+</Base>

@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+---
+<Base title="Features: art checks, leads, quotes, approvals and deposits" description="OKtoPress features for small print shops: art checker, lead generation, quote generation, signed approvals and Stripe deposits (coming soon).">
+<div class="wrap">
+  <div class="page-hero"><h1>Features</h1><p>OKtoPress owns the pre-job step for small screen print, embroidery, DTF and sign shops: art upload, quote, signed proof and deposit. It sits alongside your existing shop software.</p>
+  <div class="ctas"><a class="btn" href={SITE.signup}>Start free</a><a class="btn alt" href="/dpi-checker">Try the art checker</a></div></div>
+</div>
+<div class="band"><div class="wrap">
+  <section class="feature" id="art-checker"><div><div class="num">1</div><h2>Art checker</h2></div><div>
+    <p>Catch bad files before they reach your inbox.</p>
+    <ul><li>Effective DPI at the size the customer wants to print</li><li>Ink colour count (exact for vector, estimated for PNG and JPG)</li><li>Low-resolution warnings before the order goes in</li><li>A plain-language report the customer can read and share</li></ul>
+    <p><a href="/dpi-checker">Try the art checker</a></p></div></section>
+  <section class="feature" id="leads"><div><div class="num">2</div><h2>Lead generation</h2></div><div>
+    <p>Turn art checks into people you can follow up with.</p>
+    <ul><li>The customer enters contact details to see an instant price range</li><li>You get an email alert for each new lead</li><li>All leads in one Leads list, with CSV export</li></ul></div></section>
+  <section class="feature" id="quotes"><div><div class="num">3</div><h2>Quote generation</h2></div><div>
+    <p>Price jobs your way, without retyping.</p>
+    <ul><li>Your own questions for customers</li><li>Price rules: colours × quantity grid, screen fee per colour per location, flat or percentage fees, minimum order, waive setup above a set quantity</li><li>Turn a lead into a quote in one click</li><li>Revise quotes and email the customer a link</li></ul></div></section>
+  <section class="feature" id="approvals"><div><div class="num">4</div><h2>Approvals</h2></div><div>
+    <p>Get clear sign-off before you burn screens.</p>
+    <ul><li>The customer approves by typing their name</li><li>A timestamped, tamper-evident approval record: a SHA-256 fingerprint of the quote snapshot and proof</li><li>Helps when a customer disputes a proof or files a chargeback</li></ul></div></section>
+  <section class="feature" id="deposits"><div><div class="num">5</div><h2>Deposits <span class="soon">Coming soon</span></h2></div><div>
+    <p>Take a Stripe deposit as soon as the customer approves. This isn't built yet.</p></div></section>
+  <section class="feature" id="embed"><div><h2>On your site, in your style</h2></div><div>
+    <p>Embed OKtoPress on your own website with one line of code. A WordPress plugin is available and Wix is planned. Style it to match your site: colours, font and corners.</p>
+    <p><a href="/for-shops">Install guide</a> · <a href="/pricing">Pricing</a></p></div></section>
+</div></div>
+</Base>
