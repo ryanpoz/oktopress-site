@@ -1,0 +1,13 @@
+---
+import { SITE } from '../site';
+const path = Astro.url.pathname;
+const cur = (p: string) => (path === p || path.startsWith(p + '/')) ? 'page' : undefined;
+const { dark = false } = Astro.props;
+---
+<header class="nav w">
+  <a class="logo" href="/" aria-label="OKtoPress home"><img src={dark ? '/brand/icon-dark-white.svg' : '/brand/okp-icon-mono.svg'} alt="" width="28" height="28">OKtoPress</a>
+  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav" onclick="var n=document.getElementById('mainnav'),o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
+  <nav class="links" aria-label="Main" id="mainnav"><a href="/features" aria-current={cur('/features')}>Features</a><a href="/how-it-works" aria-current={cur('/how-it-works')}>How it works</a><a href="/pricing" aria-current={cur('/pricing')}>Pricing</a><a href="/dpi-checker" aria-current={cur('/dpi-checker')}>Art checker</a><a href="/blog" aria-current={cur('/blog')}>Blog</a><a class="login" href={SITE.login}>Log in</a><a class="btn cta" href={SITE.signup}>Start free</a></nav>
+  <script is:inline>(function(){if(!/(?:^|;\s*)okp_signed_in=1(?:;|$)/.test(document.cookie))return;var n=document.getElementById('mainnav');if(!n)return;
+var l=n.querySelector('a.login'),c=n.querySelector('a.cta');if(l)l.remove();if(c){c.textContent='Go to dashboard';c.href='https://app.oktopress.com/dashboard'}})();</script>
+</header>

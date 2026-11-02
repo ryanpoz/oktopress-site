@@ -1,8 +1,10 @@
 ---
+import '../styles/fonts.css';
 import '../styles/global.css';
 import { SITE } from '../site';
-interface Props { title: string; description?: string; type?: string; jsonld?: object[]; noindex?: boolean }
-const { title, description = SITE.description, type = 'website', jsonld = [], noindex = false } = Astro.props;
+import Nav from '../components/Nav.astro';
+interface Props { home?: boolean; title: string; description?: string; type?: string; jsonld?: object[]; noindex?: boolean }
+const { home = false, title, description = SITE.description, type = 'website', jsonld = [], noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/', SITE.url).href;
 const image = new URL('/og.png', SITE.url).href;
 const fullTitle = title.includes('OKtoPress') ? title : `${title} | OKtoPress`;
@@ -21,26 +23,21 @@ const cur = (p: string) => (path === p || path.startsWith(p + '/')) ? 'page' : u
 <meta property="og:title" content={fullTitle}><meta property="og:description" content={description}>
 <meta property="og:url" content={canonical}><meta property="og:image" content={image}>
 <meta name="twitter:card" content="summary_large_image"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="OKtoPress: Is your art OK to press?"><meta name="twitter:title" content={fullTitle}><meta name="twitter:description" content={description}><meta name="twitter:image" content={image}>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#1E2A4A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#0F0F10">
 <link rel="alternate" type="application/rss+xml" title="OKtoPress blog" href="/rss.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/InterTight-600.woff2" as="font" type="font/woff2" crossorigin>
 {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="/" aria-label="OKtoPress home"><img src="/brand/logo-navy.svg" alt="OKtoPress" width="129" height="36"></a>
-  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav" onclick="var n=document.getElementById('mainnav'),o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-  <nav aria-label="Main" id="mainnav"><a href="/features" aria-current={cur('/features')}>Features</a><a href="/how-it-works" aria-current={cur('/how-it-works')}>How it works</a><a href="/pricing" aria-current={cur('/pricing')}>Pricing</a><a href="/dpi-checker" aria-current={cur('/dpi-checker')}>Checker</a><a href="/blog" aria-current={cur('/blog')}>Blog</a><a class="login" href={SITE.login}>Log in</a><a class="cta" href={SITE.signup}>Start free</a></nav>
-  {/* Signed in on app.oktopress.com? It sets a non-secret hint cookie (okp_signed_in=1) on .oktopress.com. */}
-  <script is:inline>(function(){if(!/(?:^|;\s*)okp_signed_in=1(?:;|$)/.test(document.cookie))return;var n=document.getElementById('mainnav');if(!n)return;
-var l=n.querySelector('a.login'),c=n.querySelector('a.cta');if(l)l.remove();if(c){c.textContent='Go to dashboard';c.href='https://app.oktopress.com/dashboard'}})();</script>
-</div></header>
+{home ? (
+<div class="hwrap"><div class="cmyk" aria-hidden="true"><i class="c"></i><i class="m"></i><i class="y"></i><svg class="regbig" viewBox="0 0 200 200"><circle cx="100" cy="100" r="46" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="100" cy="100" r="78" fill="none" stroke="#fff" stroke-width=".6" stroke-dasharray="2 6"/><path d="M100 0v200M0 100h200" stroke="#fff" stroke-width="1.2"/></svg></div>
+<Nav dark />
+<slot name="hero" />
+</div>) : <Nav />}
 <main><slot /></main>
-<footer class="site"><div class="wrap">
-  <span class="fbrand"><img src="/brand/logo-onnavy.svg" alt="OKtoPress" width="144" height="40"><span>Made in Nelson, BC</span></span>
-  <span><a href="/features">Features</a> · <a href="/how-it-works">How it works</a> · <a href="/pricing">Pricing</a> · <a href="/dpi-checker">Checker</a> · <a href="/for-shops">Install</a> · <a href="/blog">Blog</a> · <a href={SITE.login}>Log in</a> · <a href={SITE.signup}>Start free</a> · <a href="/rss.xml">RSS</a> · <a href="/privacy">Privacy</a></span>
-</div></footer>
+<footer class="foot w"><div class="fl"><a class="logo" href="/"><img src="/brand/okp-icon-mono.svg" alt="" width="24" height="24">OKtoPress</a><p>Software for small print shops. Built in Nelson, BC.</p></div>
+  <nav class="flinks" aria-label="Footer"><a href="/features">Features</a><a href="/how-it-works">How it works</a><a href="/pricing">Pricing</a><a href="/dpi-checker">Art checker</a><a href="/for-shops">Install</a><a href="/blog">Blog</a><a href={SITE.login}>Log in</a><a href="/rss.xml">RSS</a><a href="/privacy">Privacy</a></nav>
+</footer>
 <script is:inline>
 /* Pass ?src= through to iframes and internal links that opt in */
 (function(){var s=new URLSearchParams(location.search).get('src');if(!s)return;

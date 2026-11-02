@@ -1,0 +1,12 @@
+---
+const steps = [
+  ['Upload art', 'Customer drops a file on your site'],
+  ['Art check', 'DPI, colours and size, instantly'],
+  ['Email', 'Customer enters contact details'],
+  ['Price range', 'From your own price rules'],
+  ['You get the lead', 'Email alert and Leads list'],
+  ['Quote', 'One click from the lead'],
+  ['Signed approval', 'Typed name and timestamp'],
+];
+---
+<ol class="journey">{steps.map(([t, d], i) => <li><span class="k">{String(i + 1).padStart(2, '0')}</span><b>{t}</b><span>{d}</span></li>)}</ol>

@@ -1,57 +1,35 @@
 ---
 import Base from '../layouts/Base.astro';
 import Steps from '../components/Steps.astro';
+import Journey from '../components/Journey.astro';
 import { SITE } from '../site';
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'OKtoPress', url: SITE.url, logo: SITE.url + '/brand/app-icon-512.png' };
 const web = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'OKtoPress', url: SITE.url };
+const f = (n: string) => `/images/features/${n}.webp`;
+const feats = [
+  { k: '01 / Art checker', t: 'Art checker', p: 'DPI at print size, ink colour count and low-res warnings, with a report your customer can read.', src: f('art-checker-report'), alt: 'Art check report showing a low-resolution warning and a 2-colour ink estimate' },
+  { k: '02 / Lead generation', t: 'Lead generation', p: 'Customers leave their details to see an instant price range. You get an alert, a Leads list and CSV export.', src: f('lead-gen-price-range'), alt: 'Customer sees a rough price range of $615 to $755 for 48 tees. Example data for illustration' },
+  { k: '03 / Quote generation', t: 'Quote generation', p: 'Your questions and your price rules. Turn a lead into a quote in one click and email the customer a link.', src: f('quote-editor'), alt: 'Quote editor with line items, setup fees, tax and turnaround date. Example data for illustration' },
+  { k: '04 / Approvals', t: 'Approvals', p: 'Customers approve by typed name. You keep a timestamped, tamper-evident record for proof disputes.', src: f('approvals-typed-name-record'), alt: 'Customer approves by typing their name, above the shop’s timestamped approval record. Example data for illustration' },
+];
 ---
-<Base title="OKtoPress: Turn your website into a quote machine" jsonld={[org, web]}>
-<div class="wrap">
-  <div class="hero home">
-    <div class="hero-copy">
-      <h1>Turn your website into a quote machine</h1>
-      <p class="lede">For small screen print, embroidery, DTF and sign shops. Customers upload art, get it checked and see a price range. You get the lead, send the quote and collect a signed approval, all from one line of code on your site.</p>
-      <div class="ctas"><a class="btn" href={SITE.signup}>Start free</a><a class="btn alt" href="/dpi-checker" data-pass-src>Try the art checker</a></div>
-      <p class="small muted">Works alongside your existing shop software. Built in Nelson, BC.</p>
-    </div>
-    <img class="okto" src="/brand/okto-squeegee-pull.svg" alt="" width="320" height="320">
-    <div class="demo card" aria-label="Example checker report (illustration)">
-      <p class="demo-t">Art checker</p><p class="demo-s">Example report</p>
-      <div class="drop"><span class="c"></span><span class="b"></span><span class="f">shirt-logo.png</span></div>
-      <ul><li>Resolution <span class="pill good">Good</span></li><li>Colours <span class="pill warn">Borderline</span></li><li>Print size <span class="pill good">Good</span></li></ul>
-      <a class="btn block" href="/dpi-checker" data-pass-src>Check your own art</a>
-    </div>
-  </div>
-</div>
-<div class="band"><div class="wrap">
-  <section><h2>From uploaded art to signed approval</h2>
-    <ol class="journey">
-      <li>Upload art<span>Customer drops a file on your site</span></li>
-      <li>Art check<span>DPI, colours and size, instantly</span></li>
-      <li>Email<span>Customer enters contact details</span></li>
-      <li>Price range<span>From your own price rules</span></li>
-      <li>You get the lead<span>Email alert and Leads list</span></li>
-      <li>Quote<span>One click from the lead</span></li>
-      <li>Signed approval<span>Typed-name, timestamped record</span></li>
-    </ol>
-  </section>
-  <section><h2>Everything before the job starts</h2>
-    <div class="grid">
-      <div class="card tealbar"><h3>Art checker</h3><p>DPI at print size, ink colour count and low-res warnings, with a report your customer can read.</p></div>
-      <div class="card tealbar"><h3>Lead generation</h3><p>Customers leave their details to see an instant price range. You get an alert, a Leads list and CSV export.</p></div>
-      <div class="card tealbar"><h3>Quote generation</h3><p>Your questions and your price rules. Turn a lead into a quote in one click and email the customer a link.</p></div>
-      <div class="card tealbar"><h3>Approvals</h3><p>Customers approve by typed name. You keep a timestamped, tamper-evident record for proof disputes.</p></div>
-      <div class="card"><span class="soon">Coming soon</span><h3>Deposits</h3><p>Take a Stripe deposit when the customer approves.</p></div>
-    </div>
-    <p style="margin-top:20px"><a class="btn alt" href="/features">See all features</a></p>
-  </section>
-  <section><h2>Works alongside your shop software</h2>
-    <p>OKtoPress isn't an all-in-one. Keep the shop software you already use for production, invoicing and inventory. OKtoPress owns the step before that: art upload, quote, signed proof and deposit, right on your own website.</p>
-  </section>
-  <section><h2>Set up in 3 steps</h2><Steps /><p style="margin-top:20px"><a href="/how-it-works">How it works</a></p></section>
-  <section><h2>Simple, flat pricing</h2>
-    <p>Start free with the art checker and up to 5 leads a month. Leads is $9.99/month; Pro is $29.99/month for quotes, approval records and no branding. <strong>Free while in early access: every feature is unlocked during early access.</strong></p>
-    <div class="ctas"><a class="btn" href={SITE.signup}>Start free</a><a class="btn alt" href="/pricing">See pricing</a></div>
-  </section>
-</div></div>
+<Base home title="OKtoPress: Turn your website into a quote machine" jsonld={[org, web]}>
+<header class="hero w" slot="hero"><p class="pill"><span class="d"></span>For screen print, embroidery, DTF and sign shops</p>
+  <h1>Turn your website into a <span class="r">quote machine.</span></h1>
+  <p class="lede">Customers upload art, get it checked and see a price range. You get the lead, send the quote and collect a signed approval, all from one line of code on your site.</p>
+  <div class="ctas"><a class="btn lg" href={SITE.signup}>Start free</a><a class="btn ghost lg" href="/dpi-checker" data-pass-src>Try the art checker →</a></div>
+  <div class="specrow"><div><span>01</span>Art check</div><div><span>02</span>Lead</div><div><span>03</span>Quote</div><div><span>04</span>Signed approval</div></div>
+  <div class="stage v3"><svg class="swipe" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ink" x1="0" x2="1"><stop offset="0" stop-color="#C2412D" stop-opacity="0"/><stop offset=".15" stop-color="#C2412D"/><stop offset=".85" stop-color="#E0583F"/><stop offset="1" stop-color="#E0583F" stop-opacity="0"/></linearGradient></defs><path class="sw" d="M20 150 C 220 70, 420 190, 620 120 S 1000 60, 1180 110 L1180 170 C 980 140, 820 210, 620 180 S 220 200, 20 200 Z" fill="url(#ink)"/></svg>
+  <figure class="frame main"><img src="/images/ui/ui-leads.webp" width="2000" height="1046" alt="Leads list in OKtoPress for Example Print Co. Example data for illustration"></figure><figure class="frame float"><img src="/images/ui/ui-checker.webp" width="2000" height="1008" alt="Customer art check report"></figure></div>
+  <p class="fine">Works alongside your existing shop software. Built in Nelson, BC.</p>
+</header>
+<section class="sec w"><p class="k">The journey</p><h2>From uploaded art to signed approval.</h2><Journey /></section>
+<section class="sec w"><p class="k">Features</p><h2>Everything before the job starts.</h2>
+  {feats.map((x) => <article class="feat"><div class="ft"><p class="k">{x.k}</p><h3>{x.t}</h3><p>{x.p}</p></div><figure class="frame"><img src={x.src} width="1200" height="900" alt={x.alt} loading="lazy"></figure></article>)}
+  <div class="soon"><span class="badge">Coming soon</span><div><h3>Deposits</h3><p>Take a Stripe deposit when the customer approves.</p></div><a class="btn ghost" href="/features">See all features →</a></div>
+</section>
+<section class="sec dark"><div class="w two"><div><p class="k">Works alongside your shop software</p><h2>Not an all-in-one. The step before.</h2></div><div><p class="bp">OKtoPress isn't an all-in-one. Keep the shop software you already use for production, invoicing and inventory. OKtoPress owns the step before that: art upload, quote, signed proof and deposit, right on your own website.</p>
+  <div class="flow"><div><span class="k">Before the job</span><b>OKtoPress</b><span>Art upload · quote · signed proof · deposit (soon)</span></div><span class="arrow">→</span><div class="muted"><span class="k">During the job</span><b>Your shop software</b><span>Production · invoicing · inventory</span></div></div></div></div></section>
+<section class="sec w"><p class="k">Setup</p><h2>Set up in 3 steps.</h2><Steps /><p style="margin-top:16px"><a href="/how-it-works">How it works →</a></p></section>
+<section class="sec w"><p class="k">Pricing</p><h2>Simple, flat pricing.</h2><div class="tiers"><div class="tier"><p class="k">Free</p><p class="price">$0</p><p>Art checker and up to 5 leads a month.</p></div><div class="tier"><p class="k">Leads</p><p class="price">$9.99</p><p>per month. Unlimited leads and lead alerts.</p></div><div class="tier"><p class="k">Pro</p><p class="price">$29.99</p><p>per month. Quotes, approval records and no branding.</p></div></div><p class="ea"><span class="d"></span>Free while in early access: every feature is unlocked during early access.</p><div class="ctas"><a class="btn lg" href={SITE.signup}>Start free</a><a class="btn ghost lg" href="/pricing">See pricing →</a></div></section>
 </Base>
